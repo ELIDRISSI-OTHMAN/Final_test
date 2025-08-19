@@ -17,8 +17,8 @@ if not exist "icon.ico" (
 )
 
 REM Check if Inno Setup is available
-where iscc >nul 2>nul
-if %ERRORLEVEL% NEQ 0 (
+iscc >nul 2>&1
+if errorlevel 1 (
     echo ERROR: Inno Setup Compiler (iscc) not found in PATH
     echo.
     echo Please install Inno Setup from: https://jrsoftware.org/isinfo.php
@@ -36,7 +36,7 @@ if not exist "installer" mkdir installer
 REM Run Inno Setup
 echo Creating installer with Inno Setup...
 iscc tissue_stitcher_setup.iss
-if %ERRORLEVEL% NEQ 0 (
+if errorlevel 1 (
     echo ERROR: Inno Setup failed
     echo Check the tissue_stitcher_setup.iss file for errors
     pause
