@@ -1,0 +1,147 @@
+TISSUE FRAGMENT STITCHING TOOL - USER GUIDE
+===========================================
+
+QUICK START GUIDE:
+------------------
+
+1. LOADING IMAGES:
+   - Click "📁 Load Images" or press Ctrl+O
+   - Select one or more TIFF files
+   - Images will appear in the fragment list and canvas
+
+2. BASIC MANIPULATION:
+   - Click on a fragment to select it
+   - Drag fragments to move them
+   - Use control panel buttons for rotation and flipping
+
+3. GROUP OPERATIONS:
+   - Enable "Rectangle Selection Tool" (Ctrl+Shift+R)
+   - Drag to select multiple fragments
+   - Use Group tab in control panel for group operations
+
+4. EXPORTING:
+   - Click "💾 Export" button
+   - Choose PNG for quick preview or Pyramidal TIFF for full quality
+   - Select output location and settings
+
+DETAILED FEATURES:
+-----------------
+
+FRAGMENT MANIPULATION:
+- Single Fragment Controls:
+  * Rotation: 90° increments or custom angles
+  * Flipping: Horizontal and vertical
+  * Position: Precise coordinate control
+  * Visibility: Show/hide individual fragments
+
+- Group Selection:
+  * Select multiple fragments with rectangle tool
+  * Rotate entire group around center point
+  * Move group while preserving relative positions
+
+LABELED POINTS:
+- Add labeled points for precise alignment
+- Use same labels on different fragments for correspondence
+- Automatic stitching based on labeled points
+
+RIGID STITCHING:
+- Automatic feature detection and matching
+- Optimizes fragment positions to minimize alignment error
+- Works best with overlapping fragments
+
+EXPORT OPTIONS:
+- PNG: Fast export for presentations and previews
+- Pyramidal TIFF: Multi-resolution format for analysis software
+- Metadata: JSON file with all transformation parameters
+
+KEYBOARD SHORTCUTS:
+------------------
+File Operations:
+- Ctrl+O: Load images
+- Ctrl+E: Export image
+- Ctrl+M: Export metadata
+- Ctrl+Q: Quit application
+
+Editing:
+- Ctrl+Shift+R: Toggle rectangle selection
+- Ctrl+R: Reset all transformations
+- Delete: Remove selected fragment
+
+View:
+- Ctrl+0: Zoom to fit
+- Ctrl+1: Zoom 100%
+- Mouse wheel: Zoom in/out
+- Middle mouse + drag: Pan view
+
+Tools:
+- Ctrl+S: Rigid stitching
+- Ctrl+P: Add labeled point mode
+- Ctrl+Shift+S: Stitch by labels
+
+BEST PRACTICES:
+--------------
+
+Image Preparation:
+- Use preprocessed TIFF files with transparent backgrounds
+- Ensure consistent resolution across fragments
+- Remove artifacts and air bubbles before loading
+
+Fragment Arrangement:
+- Start with rough manual positioning
+- Use labeled points for precise alignment
+- Apply rigid stitching for final refinement
+
+Performance Tips:
+- Hide unused fragments to improve performance
+- Use lower zoom levels for smoother interaction
+- Close other applications when processing large images
+
+Quality Control:
+- Zoom in to check alignment accuracy
+- Use different opacity levels to verify overlap
+- Export at multiple resolutions for different uses
+
+TROUBLESHOOTING:
+---------------
+
+Common Issues:
+- "No fragments to export": Ensure at least one fragment is visible
+- "Stitching failed": Check that fragments have overlapping regions
+- Slow performance: Reduce number of visible fragments or zoom level
+
+File Format Issues:
+- Use TIFF files with proper alpha channels
+- Ensure images are preprocessed and segmented
+- Check that file paths don't contain special characters
+
+Memory Issues:
+- Close other applications to free RAM
+- Process smaller batches of fragments
+- Use lower resolution images for initial alignment
+
+SUPPORTED WORKFLOWS:
+-------------------
+
+1. HISTOLOGY SLIDE RECONSTRUCTION:
+   - Load tissue section fragments
+   - Arrange using anatomical landmarks
+   - Use labeled points for precise alignment
+   - Export as pyramidal TIFF for analysis
+
+2. SERIAL SECTION ALIGNMENT:
+   - Load consecutive tissue sections
+   - Use corresponding anatomical features
+   - Apply rigid stitching for consistency
+   - Export metadata for reproducibility
+
+3. MULTI-STAIN REGISTRATION:
+   - Load different staining of same tissue
+   - Use tissue morphology for alignment
+   - Maintain spatial relationships
+   - Export for comparative analysis
+
+For more detailed information, see the full documentation at:
+https://github.com/scientific-imaging/tissue-stitcher
+
+Version: 1.0.1
+Scientific Imaging Lab - 2024

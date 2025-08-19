@@ -1,0 +1,91 @@
+TISSUE FRAGMENT STITCHING TOOL - SYSTEM REQUIREMENTS
+====================================================
+
+MINIMUM SYSTEM REQUIREMENTS:
+----------------------------
+
+Operating System:
+- Windows 10 (64-bit) or newer
+- Windows 11 (64-bit) - Recommended
+
+Hardware:
+- Processor: Intel Core i5 or AMD Ryzen 5 (2.0 GHz or faster)
+- Memory (RAM): 8 GB minimum, 16 GB recommended
+- Storage: 2 GB free disk space for installation
+- Graphics: DirectX 11 compatible graphics card with OpenGL 2.1 support
+- Display: 1920x1080 resolution minimum
+
+RECOMMENDED SYSTEM REQUIREMENTS:
+-------------------------------
+
+Hardware:
+- Processor: Intel Core i7 or AMD Ryzen 7 (3.0 GHz or faster)
+- Memory (RAM): 32 GB or more for large image processing
+- Storage: SSD with 10 GB+ free space
+- Graphics: Dedicated graphics card with 2GB+ VRAM
+- Display: 2560x1440 or higher resolution
+
+SUPPORTED IMAGE FORMATS:
+-----------------------
+
+Input Formats:
+- TIFF/TIF (including pyramidal TIFF files)
+- SVS (Aperio ScanScope Virtual Slide)
+- PNG (for testing/preview)
+- JPEG/JPG (for testing/preview)
+
+Export Formats:
+- Pyramidal TIFF (multi-resolution)
+- PNG (single resolution)
+- JPEG (single resolution)
+
+NETWORK REQUIREMENTS:
+--------------------
+- No internet connection required for normal operation
+- Internet connection recommended for:
+  - Software updates
+  - Documentation access
+  - Technical support
+
+ADDITIONAL NOTES:
+----------------
+
+Performance Considerations:
+- Large image files (>4GB) require more RAM
+- Processing speed depends on image size and complexity
+- SSD storage significantly improves loading times
+- Multiple CPU cores improve stitching performance
+
+File Size Limitations:
+- Maximum recommended file size per fragment: 8 GB
+- Maximum recommended number of fragments: 50
+- Composite output size limited by available RAM
+
+Graphics Requirements:
+- OpenGL 2.1 or higher required for UI rendering
+- Hardware acceleration recommended for smooth interaction
+- Some older integrated graphics may have performance issues
+
+TROUBLESHOOTING:
+---------------
+
+If the application fails to start:
+1. Ensure Windows 10/11 64-bit is installed
+2. Update graphics drivers
+3. Install Microsoft Visual C++ Redistributable (latest)
+4. Check Windows Event Viewer for error details
+
+For performance issues:
+1. Close other memory-intensive applications
+2. Reduce number of visible fragments
+3. Use lower zoom levels for better performance
+4. Consider upgrading RAM for large datasets
+
+TECHNICAL SUPPORT:
+-----------------
+For technical support and bug reports:
+- GitHub Issues: https://github.com/scientific-imaging/tissue-stitcher/issues
+- Email: support@scientific-imaging.org
+
+Version: 1.0.1
+Last Updated: January 2024
