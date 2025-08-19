@@ -13,7 +13,13 @@ if not exist "dist\TissueStitcher\TissueStitcher.exe" (
 REM Create icon if it doesn't exist
 if not exist "icon.ico" (
     echo Creating application icon...
-    python create_icon.py
+    if exist "custom_icon.ico" (
+        echo Using custom icon: custom_icon.ico
+        copy "custom_icon.ico" "icon.ico" >nul
+    ) else (
+        echo Creating default icon...
+        python create_icon.py
+    )
 )
 
 REM Create installer directory

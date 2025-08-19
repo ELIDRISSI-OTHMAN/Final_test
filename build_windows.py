@@ -49,6 +49,19 @@ def clean_build_dirs():
 
 def create_version_file():
     """Create version info file for Windows executable"""
+    # Check for custom icon
+    if not os.path.exists('icon.ico'):
+        if os.path.exists('custom_icon.ico'):
+            import shutil
+            shutil.copy2('custom_icon.ico', 'icon.ico')
+            print("✓ Using custom icon")
+        else:
+            # Create default icon
+            try:
+                subprocess.run([sys.executable, "create_icon.py"], check=True)
+            except:
+                print("⚠ Could not create icon")
+    
     version_info = """# UTF-8
 #
 # For more details about fixed file info 'ffi' see:

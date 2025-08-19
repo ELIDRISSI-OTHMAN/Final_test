@@ -8,6 +8,14 @@ import os
 
 def create_icon():
     """Create a simple icon for the application"""
+    # Check if custom icon already exists
+    if os.path.exists('custom_icon.ico'):
+        print("✓ Using existing custom_icon.ico")
+        # Copy custom icon to icon.ico
+        import shutil
+        shutil.copy2('custom_icon.ico', 'icon.ico')
+        return
+    
     # Create a 256x256 image with transparent background
     size = 256
     img = Image.new('RGBA', (size, size), (0, 0, 0, 0))
