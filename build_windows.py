@@ -136,15 +136,49 @@ def copy_additional_files():
     """Copy additional files needed for the application"""
     dist_dir = Path("dist/TissueStitcher")
     
+    # Create openslide_bin directory in dist
+    openslide_bin_dist = dist_dir / "openslide_bin"
+    openslide_bin_dist.mkdir(exist_ok=True)
+    
     # Copy OpenSlide DLLs if they exist in conda environment
     conda_prefix = os.environ.get('CONDA_PREFIX')
     if conda_prefix:
         openslide_bin = Path(conda_prefix) / "Library" / "bin"
         if openslide_bin.exists():
+            # Copy all potential OpenSlide DLLs
+            openslide_related = [
+                'openslide', 'glib', 'gobject', 'gmodule', 'gio', 'gdk_pixbuf', 'gthread',
+                'jpeg', 'png', 'tiff', 'xml2', 'openjp2', 'iconv', 'intl', 'ffi', 'pcre2',
+                'sqlite3', 'cairo', 'pixman', 'fontconfig', 'freetype', 'harfbuzz',
+                'pango', 'zlib'
+            ]
+            
             for dll in openslide_bin.glob("*.dll"):
-                if any(name in dll.name.lower() for name in ['openslide', 'jpeg', 'png', 'tiff', 'xml2', 'glib']):
+                if any(name in dll.name.lower() for name in openslide_related):
                     shutil.copy2(dll, dist_dir)
+                    # Also copy to openslide_bin subdirectory
+                    shutil.copy2(dll, openslide_bin_dist)
                     print(f"✓ Copied {dll.name}")
+    
+    # Copy openslide_bin package DLLs if available
+    try:
+        import openslide_bin
+        openslide_bin_pkg = Path(openslide_bin.__file__).parent
+        
+        for dll in openslide_bin_pkg.glob("*.dll"):
+            # Copy to main dist directory
+            shutil.copy2(dll, dist_dir)
+            # Copy to openslide_bin subdirectory
+            shutil.copy2(dll, openslide_bin_dist)
+            print(f"✓ Copied openslide_bin {dll.name}")
+            
+        # Copy any other files from openslide_bin
+        for file in openslide_bin_pkg.glob("*"):
+            if file.is_file() and not file.name.endswith('.pyc'):
+                shutil.copy2(file, openslide_bin_dist)
+                
+    except ImportError:
+        print("⚠ openslide_bin package not found")
     
     # Copy any missing Qt6 DLLs
     qt_dir = Path(conda_prefix) / "Library" / "bin" if conda_prefix else None

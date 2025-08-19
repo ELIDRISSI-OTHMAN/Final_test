@@ -54,10 +54,24 @@ def fix_conda_paths():
         import openslide
         print(f"✓ OpenSlide found at: {openslide.__file__}")
         
+        # Check for openslide_bin package
+        try:
+            import openslide_bin
+            print(f"✓ openslide_bin found at: {openslide_bin.__file__}")
+            
+            # List DLLs in openslide_bin
+            openslide_bin_path = Path(openslide_bin.__file__).parent
+            dlls = list(openslide_bin_path.glob("*.dll"))
+            print(f"  openslide_bin DLLs: {[dll.name for dll in dlls]}")
+            
+        except ImportError:
+            print("  ⚠ openslide_bin package not found - this may cause DLL issues")
+        
         # Try to create a test slide to verify DLLs
         try:
-            # This will fail if DLLs are missing
-            openslide.OpenSlide.__new__(openslide.OpenSlide)
+            # Try to access the low-level library
+            import openslide.lowlevel
+            print("  ✓ OpenSlide low-level library accessible")
         except Exception as e:
             print(f"  ⚠ OpenSlide DLL issue: {e}")
             

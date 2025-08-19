@@ -34,11 +34,14 @@ def generate_spec_file():
         # Add OpenSlide DLLs
         openslide_bin = conda_path / "Library" / "bin"
         if openslide_bin.exists():
+            # Look for both openslide versions and all dependencies
             openslide_dlls = [
-                'libopenslide-0.dll', 'libglib-2.0-0.dll', 'libgobject-2.0-0.dll',
+                'libopenslide-0.dll', 'libopenslide-1.dll',  # Both versions
+                'libglib-2.0-0.dll', 'libgobject-2.0-0.dll', 'libgmodule-2.0-0.dll',
+                'libgio-2.0-0.dll', 'libgdk_pixbuf-2.0-0.dll', 'libgthread-2.0-0.dll',
                 'libjpeg-8.dll', 'libpng16-16.dll', 'libtiff-5.dll', 'libxml2-2.dll',
-                'zlib1.dll', 'libopenjp2-7.dll', 'libgdk_pixbuf-2.0-0.dll',
-                'libgio-2.0-0.dll', 'libgmodule-2.0-0.dll'
+                'zlib1.dll', 'libopenjp2-7.dll', 'libiconv-2.dll', 'libintl-8.dll',
+                'libffi-8.dll', 'libpcre2-8-0.dll', 'libsqlite3-0.dll'
             ]
             
             for dll in openslide_dlls:
@@ -46,11 +49,20 @@ def generate_spec_file():
                 if dll_path.exists():
                     binaries.append(f"(r'{dll_path}', '.')")
     
+    # Add openslide_bin package binaries
+    try:
+        import openslide_bin
+        openslide_bin_path = Path(openslide_bin.__file__).parent
+        for dll in openslide_bin_path.glob("*.dll"):
+            binaries.append(f"(r'{dll}', 'openslide_bin')")
+    except ImportError:
+        pass
+    
     # Hidden imports
     hidden_imports = [
         'PyQt6', 'PyQt6.QtCore', 'PyQt6.QtGui', 'PyQt6.QtWidgets',
         'PyQt6.QtOpenGLWidgets', 'cv2', 'numpy', 'PIL', 'PIL.Image',
-        'openslide', 'tifffile', 'scipy', 'scipy.optimize', 'skimage',
+        'openslide', 'openslide.lowlevel', 'openslide_bin', 'tifffile', 'scipy', 'scipy.optimize', 'skimage',
         'skimage.feature', 'skimage.transform', 'matplotlib',
         'imagecodecs', 'imagecodecs._imagecodecs'
     ]
