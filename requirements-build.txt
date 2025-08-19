@@ -1,0 +1,18 @@
+# Build requirements for Windows executable
+pyinstaller>=5.0
+auto-py-to-exe>=2.20.0
+
+# Core application dependencies (should match environment.yml)
+PyQt6>=6.4.0
+opencv-python-headless>=4.8.0
+numpy<2.0
+Pillow>=10.0.0
+openslide-python>=1.3.0
+scikit-image>=0.22.0
+scipy>=1.11.0
+matplotlib>=3.8.0
+tifffile>=2023.9.0
+
+# Additional dependencies for packaging
+pywin32>=300  # Windows-specific
+pywin32-ctypes>=0.2.0
