@@ -145,20 +145,36 @@ def copy_additional_files():
     if conda_prefix:
         openslide_bin = Path(conda_prefix) / "Library" / "bin"
         if openslide_bin.exists():
-            # Copy all potential OpenSlide DLLs
-            openslide_related = [
-                'openslide', 'glib', 'gobject', 'gmodule', 'gio', 'gdk_pixbuf', 'gthread',
-                'jpeg', 'png', 'tiff', 'xml2', 'openjp2', 'iconv', 'intl', 'ffi', 'pcre2',
-                'sqlite3', 'cairo', 'pixman', 'fontconfig', 'freetype', 'harfbuzz',
-                'pango', 'zlib'
+            # Look for both OpenSlide versions and all dependencies
+            openslide_dlls = [
+                'libopenslide-0.dll', 'libopenslide-1.dll',  # Both versions
+                'libglib-2.0-0.dll', 'libgobject-2.0-0.dll', 'libgmodule-2.0-0.dll',
+                'libgio-2.0-0.dll', 'libgdk_pixbuf-2.0-0.dll', 'libgthread-2.0-0.dll',
+                'libjpeg-8.dll', 'libpng16-16.dll', 'libtiff-5.dll', 'libxml2-2.dll',
+                'zlib1.dll', 'libopenjp2-7.dll', 'libiconv-2.dll', 'libintl-8.dll',
+                'libffi-8.dll', 'libpcre2-8-0.dll', 'libsqlite3-0.dll',
+                'libcairo-2.dll', 'libpixman-1-0.dll', 'libfontconfig-1.dll',
+                'libfreetype-6.dll', 'libharfbuzz-0.dll', 'libpango-1.0-0.dll',
+                'libpangocairo-1.0-0.dll', 'libpangoft2-1.0-0.dll', 'libpangowin32-1.0-0.dll'
             ]
             
-            for dll in openslide_bin.glob("*.dll"):
-                if any(name in dll.name.lower() for name in openslide_related):
-                    shutil.copy2(dll, dist_dir)
+            for dll_name in openslide_dlls:
+                dll_path = openslide_bin / dll_name
+                if dll_path.exists():
+                    # Copy to main dist directory
+                    shutil.copy2(dll_path, dist_dir)
                     # Also copy to openslide_bin subdirectory
-                    shutil.copy2(dll, openslide_bin_dist)
-                    print(f"✓ Copied {dll.name}")
+                    shutil.copy2(dll_path, openslide_bin_dist)
+                    print(f"✓ Copied {dll_name}")
+            
+            # Also look for any openslide*.dll files using glob
+            import glob
+            openslide_pattern = str(openslide_bin / "*openslide*.dll")
+            for dll_path in glob.glob(openslide_pattern):
+                dll_file = Path(dll_path)
+                shutil.copy2(dll_file, dist_dir)
+                shutil.copy2(dll_file, openslide_bin_dist)
+                print(f"✓ Copied {dll_file.name}")
     
     # Copy openslide_bin package DLLs if available
     try:

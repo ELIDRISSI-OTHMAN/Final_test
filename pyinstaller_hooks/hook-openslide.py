@@ -51,10 +51,10 @@ try:
         binaries.append((dll_file, 'openslide_bin'))
         
     # Also collect the entire openslide_bin package
-    datas += collect_data_files('openslide_bin')
+    datas = collect_data_files('openslide_bin')
     
 except ImportError:
-    pass
+    datas = []
 
-# Collect any data files
-datas = collect_data_files('openslide')
+# Collect any data files from openslide
+datas += collect_data_files('openslide')
