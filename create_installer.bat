@@ -16,29 +16,21 @@ if not exist "icon.ico" (
     python create_icon.py
 )
 
-REM Check if Inno Setup is available
-iscc >nul 2>&1
-if errorlevel 1 (
-    echo ERROR: Inno Setup Compiler (iscc) not found in PATH
-    echo.
-    echo Please install Inno Setup from: https://jrsoftware.org/isinfo.php
-    echo After installation, add the Inno Setup directory to your PATH
-    echo or run this command from the Inno Setup directory:
-    echo   iscc "C:\path\to\your\project\tissue_stitcher_setup.iss"
-    echo.
-    pause
-    exit /b 1
-)
-
 REM Create installer directory
 if not exist "installer" mkdir installer
 
-REM Run Inno Setup
+REM Try to run Inno Setup
 echo Creating installer with Inno Setup...
 iscc tissue_stitcher_setup.iss
-if errorlevel 1 (
-    echo ERROR: Inno Setup failed
-    echo Check the tissue_stitcher_setup.iss file for errors
+
+if %errorlevel% neq 0 (
+    echo.
+    echo ERROR: Inno Setup failed or not found
+    echo.
+    echo Please install Inno Setup from: https://jrsoftware.org/isinfo.php
+    echo After installation, you can run this command manually:
+    echo   iscc tissue_stitcher_setup.iss
+    echo.
     pause
     exit /b 1
 )
