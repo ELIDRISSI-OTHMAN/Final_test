@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\section{Architecture et Technologies}
+
+\subsection{Choix Technologiques}
+
+\subsubsection{Langage principal : Python 3.11}
+\begin{itemize}
+\item Ecosysteme riche pour l'imagerie scientifique
+\item Bibliotheques specialisees disponibles
+\item Developpement rapide et maintenable
+\end{itemize}
+
+\subsubsection{Interface graphique : PyQt6}
+\begin{itemize}
+\item Performance native
+\item Widgets avances (OpenGL)
+\item Themes personnalisables
+\item Multi-plateforme
+\end{itemize}
+
+\subsubsection{Traitement d'images}
+\begin{itemize}
+\item \textbf{OpenCV} : Transformations geometriques
+\item \textbf{NumPy} : Calculs matriciels optimises
+\item \textbf{scikit-image} : Algorithmes d'analyse d'images
+\item \textbf{OpenSlide} : Support formats pyramidaux
+\end{itemize}
+
+\subsubsection{Optimisation numerique}
+\begin{itemize}
+\item \textbf{SciPy} : Algorithmes d'optimisation
+\item \textbf{SIFT (OpenCV)} : Detection de caracteristiques
+\end{itemize}
+
+\subsection{Architecture Logicielle}
+
+L'architecture suit le pattern Model-View-Controller (MVC) :
+
+\subsubsection{Structure des modules}
+\begin{itemize}
+\item \textbf{src/core/} : Logique metier
+\item \textbf{src/ui/} : Interface utilisateur
+\item \textbf{src/algorithms/} : Algorithmes
+\item \textbf{src/utils/} : Utilitaires
+\end{itemize}
+
+\subsubsection{Patterns de Conception}
+\begin{itemize}
+\item \textbf{Model-View-Controller (MVC)} : Separation des responsabilites
+\item \textbf{Observer Pattern} : Signaux PyQt6 pour la communication
+\item \textbf{Strategy Pattern} : Algorithmes de suture interchangeables
+\end{itemize}
+
+\end{document}

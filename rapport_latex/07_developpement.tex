@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\section{Developpement de l'Application}
+
+\subsection{Methodologie de Developpement}
+
+\subsubsection{Approche iterative}
+Le developpement s'est deroule en 5 phases :
+\begin{enumerate}
+\item \textbf{Phase 1} : Prototype fonctionnel (chargement + affichage)
+\item \textbf{Phase 2} : Manipulation de base (translation, rotation)
+\item \textbf{Phase 3} : Algorithmes de suture
+\item \textbf{Phase 4} : Interface avancee et export
+\item \textbf{Phase 5} : Tests et distribution
+\end{enumerate}
+
+\subsubsection{Outils de developpement}
+\begin{itemize}
+\item \textbf{IDE} : Visual Studio Code avec extensions Python
+\item \textbf{Versioning} : Git avec commits atomiques
+\item \textbf{Debug} : PyQt6 Developer Tools
+\item \textbf{Profiling} : cProfile pour l'optimisation
+\end{itemize}
+
+\subsection{Structure des Donnees}
+
+\subsubsection{Classe Fragment}
+La classe Fragment encapsule toutes les informations d'un fragment :
+\begin{itemize}
+\item Donnees d'image (numpy array)
+\item Position et transformations
+\item Proprietes d'affichage
+\item Cache des images transformees
+\end{itemize}
+
+\subsubsection{Gestion des Transformations}
+\begin{itemize}
+\item Cache des images transformees pour les performances
+\item Invalidation intelligente lors des modifications
+\item Support des rotations arbitraires (pas seulement 90 degres)
+\end{itemize}
+
+\subsection{Gestion de la Memoire}
+
+\subsubsection{Optimisations implementees}
+\begin{itemize}
+\item Chargement paresseux des niveaux pyramidaux
+\item Cache LRU pour les images transformees
+\item Rendu par niveaux de detail (LOD)
+\item Liberation automatique de la memoire
+\end{itemize}
+
+\end{document}

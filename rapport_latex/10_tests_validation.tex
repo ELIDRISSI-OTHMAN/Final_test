@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{array}
+
+\begin{document}
+
+\section{Tests et Validation}
+
+\subsection{Strategie de Test}
+
+\subsubsection{Tests unitaires}
+\begin{itemize}
+\item Fonctions de transformation geometrique
+\item Algorithmes de correspondance
+\item Chargement/sauvegarde d'images
+\end{itemize}
+
+\subsubsection{Tests d'integration}
+\begin{itemize}
+\item Pipeline complet de suture
+\item Export multi-format
+\item Interface utilisateur
+\end{itemize}
+
+\subsubsection{Tests de performance}
+\begin{itemize}
+\item Images de grande taille (> 1 GB)
+\item Nombreux fragments (> 50)
+\item Utilisation memoire prolongee
+\end{itemize}
+
+\subsection{Validation Scientifique}
+
+\subsubsection{Jeux de donnees de test}
+\begin{itemize}
+\item Images histologiques reelles
+\item Fragments avec chevauchements connus
+\item Cas difficiles (peu de texture, artefacts)
+\end{itemize}
+
+\subsubsection{Metriques de qualite}
+\begin{itemize}
+\item Erreur RMS d'alignement
+\item Temps de traitement
+\item Precision de reconstruction
+\end{itemize}
+
+\subsection{Tests Utilisateur}
+
+\subsubsection{Protocole d'evaluation}
+\begin{itemize}
+\item 5 utilisateurs (biologistes, techniciens)
+\item Taches standardisees
+\item Questionnaire de satisfaction
+\end{itemize}
+
+\subsubsection{Resultats}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{6cm}|p{4cm}|}
+\hline
+\textbf{Critere} & \textbf{Resultat} \\
+\hline
+Temps d'apprentissage & < 20 minutes \\
+\hline
+Satisfaction generale & 4.2/5 \\
+\hline
+Facilite d'utilisation & 4.0/5 \\
+\hline
+Performance percue & 4.3/5 \\
+\hline
+\end{tabular}
+\caption{Resultats des tests utilisateur}
+\end{table}
+
+\end{document}

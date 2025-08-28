@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\section{Difficultes Rencontrees}
+
+\subsection{Defis Techniques}
+
+\subsubsection{Gestion des formats pyramidaux}
+\begin{itemize}
+\item \textbf{Probleme} : Complexite des formats TIFF multi-niveaux
+\item \textbf{Solution} : Utilisation d'OpenSlide + tifffile
+\item \textbf{Apprentissage} : Specifications TIFF approfondies
+\end{itemize}
+
+\subsubsection{Performance de l'interface}
+\begin{itemize}
+\item \textbf{Probleme} : Lenteur avec images volumineuses
+\item \textbf{Solution} : Cache intelligent + rendu LOD
+\item \textbf{Temps resolution} : 2 semaines d'optimisation
+\end{itemize}
+
+\subsubsection{Distribution Windows}
+\begin{itemize}
+\item \textbf{Probleme} : DLLs OpenSlide non incluses
+\item \textbf{Solution} : Hooks PyInstaller personnalises
+\item \textbf{Impact} : Retard de 1 semaine sur planning
+\end{itemize}
+
+\subsection{Defis Algorithmiques}
+
+\subsubsection{Suture de fragments sans texture}
+\begin{itemize}
+\item \textbf{Probleme} : SIFT inefficace sur zones uniformes
+\item \textbf{Solution} : Points etiquetes manuels
+\item \textbf{Amelioration future} : Algorithmes specialises
+\end{itemize}
+
+\subsubsection{Optimisation multi-fragments}
+\begin{itemize}
+\item \textbf{Probleme} : Complexite combinatoire
+\item \textbf{Solution} : Optimisation par paires + propagation
+\item \textbf{Limitation} : Optimum local possible
+\end{itemize}
+
+\subsection{Defis de Developpement}
+
+\subsubsection{Courbe d'apprentissage PyQt6}
+\begin{itemize}
+\item Documentation parfois incomplete
+\item Differences avec PyQt5
+\item Resolution par experimentation
+\end{itemize}
+
+\subsubsection{Gestion de la memoire Python}
+\begin{itemize}
+\item Garbage collection impredictible
+\item Fuites memoire avec images volumineuses
+\item Optimisation par profiling intensif
+\end{itemize}
+
+\end{document}

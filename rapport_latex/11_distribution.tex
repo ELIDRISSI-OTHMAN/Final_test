@@ -1,0 +1,69 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\section{Distribution et Deploiement}
+
+\subsection{Packaging avec PyInstaller}
+
+\subsubsection{Defis techniques}
+\begin{itemize}
+\item Inclusion des DLLs OpenSlide
+\item Gestion des dependances conda
+\item Optimisation de la taille
+\end{itemize}
+
+\subsubsection{Solution implementee}
+La solution a consiste a :
+\begin{itemize}
+\item Creer des hooks PyInstaller personnalises
+\item Collecter automatiquement les DLLs necessaires
+\item Inclure le package openslide-bin complet
+\item Optimiser la taille finale
+\end{itemize}
+
+\subsection{Installateur Windows (Inno Setup)}
+
+\subsubsection{Fonctionnalites}
+\begin{itemize}
+\item Installation sans privileges administrateur
+\item Raccourcis bureau et menu demarrer
+\item Desinstallation propre
+\item Documentation integree
+\end{itemize}
+
+\subsubsection{Taille finale}
+L'installateur final fait environ 300 MB, incluant toutes les dependances.
+
+\subsection{Documentation Utilisateur}
+
+\subsubsection{Livrables}
+\begin{itemize}
+\item Guide utilisateur complet (50 pages)
+\item Tutoriels video
+\item FAQ et depannage
+\item Specifications techniques
+\end{itemize}
+
+\subsubsection{Formats de distribution}
+\begin{itemize}
+\item Documentation PDF integree
+\item Fichiers texte pour reference rapide
+\item Guide de demarrage rapide
+\end{itemize}
+
+\subsection{Tests de Distribution}
+
+L'installateur a ete teste sur :
+\begin{itemize}
+\item Windows 10 (versions 1909, 2004, 21H2)
+\item Windows 11 (versions 21H2, 22H2)
+\item Machines sans Python/conda installes
+\item Differentes configurations materielles
+\end{itemize}
+
+\end{document}

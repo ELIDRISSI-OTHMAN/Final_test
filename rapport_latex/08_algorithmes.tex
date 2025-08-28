@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{amsmath}
+
+\begin{document}
+
+\section{Algorithmes Implementes}
+
+\subsection{Suture Rigide Automatique}
+
+\subsubsection{Pipeline algorithmique}
+
+\begin{enumerate}
+\item \textbf{Detection de caracteristiques (SIFT)} : 
+   Extraction de 1000 points d'interet par fragment
+\item \textbf{Correspondance de caracteristiques} :
+   \begin{itemize}
+   \item Matcher FLANN pour la performance
+   \item Test de ratio de Lowe (seuil 0.7)
+   \item Filtrage RANSAC (seuil 5.0 pixels)
+   \end{itemize}
+\item \textbf{Optimisation des transformations} :
+   Minimisation L-BFGS-B avec 1000 iterations maximum
+\end{enumerate}
+
+\subsubsection{Fonction objectif}
+Minimisation de l'erreur quadratique entre points correspondants :
+\begin{equation}
+E = \sum_{i} ||T_1(p_{1i}) - T_2(p_{2i})||^2
+\end{equation}
+
+ou $T_1$ et $T_2$ sont les transformations des fragments 1 et 2, et $p_{1i}$, $p_{2i}$ sont les points correspondants.
+
+\subsection{Suture par Points Etiquetes}
+
+\subsubsection{Avantages}
+\begin{itemize}
+\item Controle precis par l'utilisateur
+\item Correspondances garanties
+\item Robustesse aux cas difficiles
+\end{itemize}
+
+\subsubsection{Algorithme}
+\begin{enumerate}
+\item Collecte des points avec etiquettes identiques
+\item Calcul de transformation rigide (SVD)
+\item Application des transformations optimales
+\end{enumerate}
+
+\subsection{Transformations Geometriques}
+
+\subsubsection{Rotation arbitraire}
+\begin{itemize}
+\item Matrice de rotation 2D
+\item Recalcul des dimensions de l'image
+\item Interpolation bilineaire
+\item Gestion des bordures transparentes
+\end{itemize}
+
+\subsubsection{Composition des transformations}
+Ordre d'application : Flip → Rotation → Translation
+
+\end{document}

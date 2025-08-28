@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\begin{document}
+
+\section{Interface Utilisateur}
+
+\subsection{Conception UX/UI}
+
+\subsubsection{Principes de design}
+\begin{itemize}
+\item \textbf{Theme sombre} : Reduction de la fatigue oculaire
+\item \textbf{Hierarchie visuelle} : Couleurs et typographie coherentes
+\item \textbf{Feedback immediat} : Apercu en temps reel
+\item \textbf{Ergonomie} : Raccourcis clavier, glisser-deposer
+\end{itemize}
+
+\subsection{Composants Principaux}
+
+\subsubsection{Canevas principal (CanvasWidget)}
+\begin{itemize}
+\item Rendu OpenGL haute performance
+\item Zoom et panoramique fluides
+\item Selection rectangle pour groupes
+\item Gestion des evenements souris/clavier
+\end{itemize}
+
+\subsubsection{Panneau de controle}
+\begin{itemize}
+\item Onglets Fragment/Groupe
+\item Controles de transformation
+\item Sliders de position precise
+\item Boutons de rotation rapide
+\end{itemize}
+
+\subsubsection{Liste des fragments}
+\begin{itemize}
+\item Miniatures avec metadonnees
+\item Cases de visibilite
+\item Glisser-deposer pour reorganisation
+\item Menu contextuel
+\end{itemize}
+
+\subsection{Optimisations de Performance}
+
+\subsubsection{Rendu optimise}
+\begin{itemize}
+\item Cache de pixmaps transformes
+\item Culling par frustum
+\item Niveaux de detail adaptatifs
+\item Double buffering
+\end{itemize}
+
+\subsubsection{Interaction fluide}
+\begin{itemize}
+\item Timers pour les mises a jour
+\item Rendu asynchrone en arriere-plan
+\item Limitation du taux de rafraichissement
+\end{itemize}
+
+\end{document}

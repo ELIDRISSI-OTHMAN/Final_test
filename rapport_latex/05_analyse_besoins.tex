@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{array}
+
+\begin{document}
+
+\section{Analyse des Besoins}
+
+\subsection{Besoins Fonctionnels}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{2cm}|p{6cm}|}
+\hline
+\textbf{Fonctionnalite} & \textbf{Priorite} & \textbf{Description} \\
+\hline
+Chargement d'images & Critique & Support TIFF pyramidal, SVS, PNG, JPEG \\
+\hline
+Manipulation fragments & Critique & Translation, rotation, retournement \\
+\hline
+Suture automatique & Haute & Algorithmes SIFT + optimisation \\
+\hline
+Points etiquetes & Haute & Alignement manuel precis \\
+\hline
+Export multi-format & Haute & PNG, TIFF pyramidal \\
+\hline
+Selection de groupe & Moyenne & Manipulation simultanee \\
+\hline
+Interface moderne & Moyenne & Theme sombre, ergonomie \\
+\hline
+\end{tabular}
+\caption{Besoins fonctionnels identifies}
+\end{table}
+
+\subsection{Besoins Non-Fonctionnels}
+
+\subsubsection{Performance}
+\begin{itemize}
+\item Chargement d'images > 1 GB
+\item Manipulation fluide (> 30 FPS)
+\item Memoire optimisee (< 8 GB RAM)
+\end{itemize}
+
+\subsubsection{Utilisabilite}
+\begin{itemize}
+\item Interface intuitive (< 30 min apprentissage)
+\item Raccourcis clavier
+\item Feedback visuel immediat
+\end{itemize}
+
+\subsubsection{Compatibilite}
+\begin{itemize}
+\item Windows 10/11 (64-bit)
+\item Formats d'imagerie standards
+\item Distribution sans dependances
+\end{itemize}
+
+\subsection{Contraintes Techniques}
+
+\begin{itemize}
+\item Utilisation de Python pour la rapidite de developpement
+\item Interface native avec PyQt6 pour les performances
+\item Support obligatoire des formats pyramidaux
+\item Memoire limitee pour les images volumineuses
+\end{itemize}
+
+\end{document}
