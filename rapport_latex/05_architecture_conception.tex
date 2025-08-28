@@ -1,0 +1,201 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\onehalfspacing
+
+\begin{document}
+
+\section{Architecture et Conception}
+
+\subsection{Choix Technologiques}
+
+\subsubsection{Justification du Langage Python}
+
+Le choix de Python 3.11 comme langage principal s'appuie sur plusieurs facteurs decisifs :
+
+\begin{itemize}
+\item \textbf{Ecosysteme scientifique} : Disponibilite de bibliotheques specialisees (NumPy, SciPy, OpenCV, scikit-image)
+\item \textbf{Rapidite de developpement} : Syntaxe claire et productive pour le prototypage rapide
+\item \textbf{Communaute active} : Support communautaire important et documentation extensive
+\item \textbf{Interoperabilite} : Integration facile avec bibliotheques C/C++ pour les performances critiques
+\end{itemize}
+
+\subsubsection{Framework d'Interface : PyQt6}
+
+PyQt6 a ete selectionne pour l'interface graphique en raison de :
+
+\begin{itemize}
+\item \textbf{Performances natives} : Rendu accelere materiel via OpenGL
+\item \textbf{Widgets avances} : Composants sophistiques pour applications professionnelles
+\item \textbf{Themes personnalisables} : Adaptation a l'environnement medical (theme sombre)
+\item \textbf{Multi-plateforme} : Potentiel d'extension vers macOS/Linux
+\item \textbf{Maturite} : Framework stable avec historique de maintenance long terme
+\end{itemize}
+
+\subsubsection{Bibliotheques de Traitement d'Images}
+
+La selection des bibliotheques de traitement s'est basee sur les besoins specifiques :
+
+\begin{itemize}
+\item \textbf{OpenCV} : Transformations geometriques optimisees et detection SIFT
+\item \textbf{NumPy} : Operations matricielles haute performance
+\item \textbf{scikit-image} : Algorithmes d'analyse d'images scientifiques
+\item \textbf{OpenSlide} : Support natif des formats d'imagerie medicale pyramidaux
+\item \textbf{Pillow} : Manipulation d'images standards et conversion de formats
+\end{itemize}
+
+\subsection{Architecture Logicielle}
+
+\subsubsection{Pattern Architectural : MVC}
+
+L'application suit le pattern Model-View-Controller pour assurer une separation claire des responsabilites :
+
+\begin{itemize}
+\item \textbf{Model} : Classes Fragment, PointManager encapsulant la logique metier
+\item \textbf{View} : Widgets PyQt6 pour l'affichage et l'interaction utilisateur
+\item \textbf{Controller} : FragmentManager, MainWindow orchestrant les interactions
+\end{itemize}
+
+\subsubsection{Structure Modulaire}
+
+L'architecture modulaire facilite la maintenance et les extensions futures :
+
+\begin{verbatim}
+src/
+├── core/                    # Logique metier
+│   ├── fragment.py         # Modele de donnees fragment
+│   ├── fragment_manager.py # Gestionnaire de fragments
+│   ├── image_loader.py     # Chargement d'images
+│   └── point_manager.py    # Gestion des points etiquetes
+├── ui/                     # Interface utilisateur
+│   ├── canvas_widget.py    # Canevas principal OpenGL
+│   ├── control_panel.py    # Panneau de controle
+│   ├── fragment_list.py    # Liste des fragments
+│   └── theme.py           # Theme visuel
+├── algorithms/             # Algorithmes specialises
+│   └── rigid_stitching.py # Suture rigide
+└── utils/                 # Utilitaires
+    ├── export_manager.py  # Export d'images
+    └── pyramidal_exporter.py # Export pyramidal
+\end{verbatim}
+
+\subsection{Conception des Composants Principaux}
+
+\subsubsection{Gestionnaire de Fragments (FragmentManager)}
+
+Le FragmentManager constitue le coeur de l'application, gerant :
+
+\begin{itemize}
+\item \textbf{Cycle de vie des fragments} : Creation, modification, suppression
+\item \textbf{Transformations} : Application et composition des transformations geometriques
+\item \textbf{Selection} : Gestion des selections simples et multiples
+\item \textbf{Persistance} : Serialisation/deserialisation des etats
+\end{itemize}
+
+\subsubsection{Canevas de Rendu (CanvasWidget)}
+
+Le CanvasWidget optimise l'affichage haute performance :
+
+\begin{itemize}
+\item \textbf{Rendu OpenGL} : Acceleration materielle pour images volumineuses
+\item \textbf{Niveaux de detail (LOD)} : Adaptation automatique selon le zoom
+\item \textbf{Culling spatial} : Rendu uniquement des elements visibles
+\item \textbf{Cache intelligent} : Mise en cache des transformations couteuses
+\end{itemize}
+
+\subsubsection{Chargeur d'Images (ImageLoader)}
+
+L'ImageLoader gere la complexite des formats medicaux :
+
+\begin{itemize}
+\item \textbf{Detection automatique} : Identification du format et des capacites
+\item \textbf{Chargement progressif} : Support des images pyramidales multi-resolution
+\item \textbf{Gestion memoire} : Optimisation pour images volumineuses
+\item \textbf{Conversion formats} : Normalisation vers format interne RGBA
+\end{itemize}
+
+\subsection{Patterns de Conception Utilises}
+
+\subsubsection{Observer Pattern}
+
+Le systeme de signaux PyQt6 implemente le pattern Observer :
+
+\begin{itemize}
+\item \textbf{Decoupage faible} : Composants independants communiquant par signaux
+\item \textbf{Reactivite} : Mise a jour automatique de l'interface
+\item \textbf{Extensibilite} : Ajout facile de nouveaux observateurs
+\end{itemize}
+
+\subsubsection{Strategy Pattern}
+
+Les algorithmes de suture utilisent le pattern Strategy :
+
+\begin{itemize}
+\item \textbf{Interchangeabilite} : Selection dynamique d'algorithmes
+\item \textbf{Extensibilite} : Ajout facile de nouveaux algorithmes
+\item \textbf{Testabilite} : Test independant de chaque strategie
+\end{itemize}
+
+\subsubsection{Factory Pattern}
+
+La creation d'exporteurs suit le pattern Factory :
+
+\begin{itemize}
+\item \textbf{Abstraction} : Interface commune pour tous les exporteurs
+\item \textbf{Flexibilite} : Ajout de nouveaux formats d'export
+\item \textbf{Configuration} : Parametrisation selon le format cible
+\end{itemize}
+
+\subsection{Gestion des Performances}
+
+\subsubsection{Optimisations Memoire}
+
+\begin{itemize}
+\item \textbf{Chargement paresseux} : Images chargees a la demande
+\item \textbf{Cache LRU} : Liberation automatique des donnees anciennes
+\item \textbf{Compression temporaire} : Reduction de l'empreinte memoire
+\item \textbf{Garbage collection} : Gestion explicite de la memoire Python
+\end{itemize}
+
+\subsubsection{Optimisations Calcul}
+
+\begin{itemize}
+\item \textbf{Vectorisation NumPy} : Operations matricielles optimisees
+\item \textbf{Cache de transformations} : Eviter les recalculs identiques
+\item \textbf{Parallelisation} : Utilisation des coeurs multiples pour certaines operations
+\item \textbf{Algorithmes adaptatifs} : Precision ajustee selon le contexte
+\end{itemize}
+
+\subsubsection{Optimisations Interface}
+
+\begin{itemize}
+\item \textbf{Double buffering} : Elimination du scintillement
+\item \textbf{Rendu differentiel} : Mise a jour des zones modifiees uniquement
+\item \textbf{Limitation FPS} : Controle de la frequence de rafraichissement
+\item \textbf{Interaction asynchrone} : Interface reactive pendant les calculs
+\end{itemize}
+
+\subsection{Securite et Robustesse}
+
+\subsubsection{Gestion d'Erreurs}
+
+\begin{itemize}
+\item \textbf{Exceptions typees} : Categorisation des erreurs pour traitement approprie
+\item \textbf{Recuperation gracieuse} : Continuation du fonctionnement apres erreurs non-critiques
+\item \textbf{Logging detaille} : Tracabilite pour le debogage
+\item \textbf{Validation d'entree} : Verification systematique des donnees utilisateur
+\end{itemize}
+
+\subsubsection{Integrite des Donnees}
+
+\begin{itemize}
+\item \textbf{Sauvegarde automatique} : Prevention de la perte de travail
+\item \textbf{Verification coherence} : Controles d'integrite des transformations
+\item \textbf{Historique operations} : Tracabilite complete des modifications
+\item \textbf{Export securise} : Verification de l'integrite des fichiers exportes
+\end{itemize}
+
+\end{document}

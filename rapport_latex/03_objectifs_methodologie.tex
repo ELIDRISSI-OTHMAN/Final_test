@@ -1,0 +1,169 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\usepackage{array}
+\onehalfspacing
+
+\begin{document}
+
+\section{Objectifs du Stage}
+
+\subsection{Objectif Principal}
+
+L'objectif principal de ce stage etait de developper une application desktop complete et professionnelle permettant la manipulation, l'arrangement et la suture automatique de fragments d'images tissulaires. Cette application devait combiner une interface utilisateur intuitive avec des algorithmes avances de traitement d'images, tout en supportant les formats d'imagerie medicale standards.
+
+\subsection{Objectifs Specifiques}
+
+\subsubsection{Objectifs Techniques}
+
+Les objectifs techniques definis en debut de stage comprenaient :
+
+\begin{itemize}
+\item Implementation d'algorithmes de suture rigide bases sur la detection de caracteristiques SIFT
+\item Support complet des formats pyramidaux (TIFF multi-resolution, SVS)
+\item Developpement d'une interface graphique haute performance utilisant OpenGL
+\item Creation d'un systeme d'export multi-format preservant la qualite des images
+\item Optimisation des performances pour les images de grande taille (> 1 GB)
+\end{itemize}
+
+\subsubsection{Objectifs Fonctionnels}
+
+Du point de vue fonctionnel, l'application devait offrir :
+
+\begin{itemize}
+\item Manipulation intuitive des fragments (rotation, translation, retournement)
+\item Selection et manipulation simultanee de groupes de fragments
+\item Systeme de points etiquetes pour alignement manuel precis
+\item Previsualisation en temps reel des transformations
+\item Export vers formats compatibles avec les outils d'analyse existants
+\end{itemize}
+
+\subsubsection{Objectifs Qualite}
+
+Les exigences de qualite incluaient :
+
+\begin{itemize}
+\item Code maintenable et bien documente
+\item Architecture modulaire permettant les extensions futures
+\item Tests et validation sur donnees reelles
+\item Distribution professionnelle avec installateur Windows
+\item Documentation utilisateur complete
+\end{itemize}
+
+\subsection{Criteres de Reussite}
+
+Des criteres de reussite quantifiables ont ete definis :
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{6cm}|p{4cm}|}
+\hline
+\textbf{Critere} & \textbf{Objectif} \\
+\hline
+Precision d'alignement & < 2 pixels RMS \\
+\hline
+Temps de chargement (image 2GB) & < 10 secondes \\
+\hline
+Utilisation memoire maximale & < 8 GB RAM \\
+\hline
+Taux de reussite suture automatique & > 80\% \\
+\hline
+Temps d'apprentissage utilisateur & < 30 minutes \\
+\hline
+\end{tabular}
+\caption{Criteres de reussite quantifiables}
+\end{table}
+
+\section{Methodologie de Developpement}
+
+\subsection{Approche Generale}
+
+Le developpement a suivi une approche iterative et incrementale, permettant une validation continue des fonctionnalites avec les utilisateurs finaux. Cette methodologie a ete choisie pour sa flexibilite et sa capacite a s'adapter aux retours utilisateurs tout au long du projet.
+
+\subsection{Phases de Developpement}
+
+Le projet a ete structure en cinq phases principales :
+
+\subsubsection{Phase 1 : Prototype Fonctionnel (Semaines 1-2)}
+\begin{itemize}
+\item Mise en place de l'architecture de base
+\item Implementation du chargement d'images simple
+\item Creation de l'interface utilisateur minimale
+\item Affichage basique des fragments
+\end{itemize}
+
+\subsubsection{Phase 2 : Manipulation de Base (Semaines 3-4)}
+\begin{itemize}
+\item Implementation des transformations geometriques
+\item Ajout des controles de manipulation (rotation, translation)
+\item Optimisation du rendu pour les performances
+\item Tests avec images de taille moyenne
+\end{itemize}
+
+\subsubsection{Phase 3 : Algorithmes Avances (Semaines 5-7)}
+\begin{itemize}
+\item Developpement des algorithmes de suture rigide
+\item Integration de la detection de caracteristiques SIFT
+\item Implementation de l'optimisation numerique
+\item Tests sur cas complexes
+\end{itemize}
+
+\subsubsection{Phase 4 : Interface Avancee et Export (Semaines 8-9)}
+\begin{itemize}
+\item Amelioration de l'interface utilisateur
+\item Implementation du systeme d'export pyramidal
+\item Ajout des fonctionnalites de groupe
+\item Integration des points etiquetes
+\end{itemize}
+
+\subsubsection{Phase 5 : Tests et Distribution (Semaines 10-12)}
+\begin{itemize}
+\item Tests exhaustifs avec utilisateurs finaux
+\item Optimisation des performances
+\item Creation de l'installateur Windows
+\item Redaction de la documentation
+\end{itemize}
+
+\subsection{Outils et Environnement de Developpement}
+
+\subsubsection{Environnement Technique}
+\begin{itemize}
+\item \textbf{IDE} : Visual Studio Code avec extensions Python
+\item \textbf{Gestionnaire de versions} : Git avec commits atomiques
+\item \textbf{Environnement Python} : Conda avec environnement dedie
+\item \textbf{Debugging} : PyQt6 Developer Tools et debugger integre
+\item \textbf{Profiling} : cProfile et memory-profiler pour l'optimisation
+\end{itemize}
+
+\subsubsection{Methodologie de Test}
+\begin{itemize}
+\item Tests unitaires pour les fonctions critiques
+\item Tests d'integration pour les workflows complets
+\item Tests de performance avec images reelles
+\item Tests utilisateur avec protocole standardise
+\end{itemize}
+
+\subsection{Gestion de Projet}
+
+\subsubsection{Suivi et Communication}
+\begin{itemize}
+\item Reunions hebdomadaires avec l'encadrant
+\item Demonstrations regulieres aux utilisateurs finaux
+\item Documentation continue du code et des decisions techniques
+\item Suivi des performances et metriques de qualite
+\end{itemize}
+
+\subsubsection{Gestion des Risques}
+Les principaux risques identifies et leurs strategies de mitigation :
+
+\begin{itemize}
+\item \textbf{Complexite algorithmique} : Prototypage rapide et validation incrementale
+\item \textbf{Performance} : Tests precoces avec donnees reelles
+\item \textbf{Compatibilite formats} : Support progressif des formats prioritaires
+\item \textbf{Utilisabilite} : Implication continue des utilisateurs finaux
+\end{itemize}
+
+\end{document}

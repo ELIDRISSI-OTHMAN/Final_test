@@ -1,0 +1,75 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\onehalfspacing
+
+\begin{document}
+
+\section{Introduction}
+
+Ce rapport presente le travail realise durant mon stage au sein du Scientific Imaging Lab, portant sur le developpement d'un outil professionnel de rearrangement et de suture rigide de fragments tissulaires. Cette application desktop, developpee en Python avec PyQt6, repond aux besoins specifiques des laboratoires d'imagerie medicale pour la reconstruction d'images histologiques fragmentees.
+
+Le projet s'inscrit dans le contexte de l'imagerie medicale numerique, ou la manipulation et l'assemblage precis de fragments tissulaires constituent un defi technique majeur pour les chercheurs et praticiens. L'evolution des technologies d'acquisition d'images medicales a conduit a la generation d'images de tres haute resolution, souvent fragmentees lors du processus d'acquisition ou de traitement, necessitant des outils specialises pour leur reconstruction.
+
+\subsection{Contexte du Stage}
+
+L'imagerie histologique moderne genere des images de tres haute resolution pouvant atteindre plusieurs gigapixels. Ces images, essentielles pour l'analyse des tissus biologiques, sont frequemment fragmentees pour diverses raisons techniques : limitations materielles lors de l'acquisition, contraintes de stockage, ou necessites de traitement parallele.
+
+La reconstruction precise de ces fragments constitue un enjeu majeur pour les laboratoires d'histologie et de pathologie. Les methodes manuelles traditionnelles sont chronophages et sujettes aux erreurs humaines, tandis que les solutions automatisees existantes presentent souvent des limitations en termes de precision ou de facilite d'utilisation.
+
+\subsection{Problematique Scientifique}
+
+Les defis identifies dans ce domaine incluent :
+
+\begin{itemize}
+\item La gestion de formats d'images complexes (TIFF pyramidaux, SVS)
+\item La necessite de maintenir une precision spatiale elevee
+\item L'integration d'algorithmes de vision par ordinateur avances
+\item Le developpement d'interfaces utilisateur intuitives pour les non-informaticiens
+\item La distribution d'outils professionnels sans dependances complexes
+\end{itemize}
+
+\section{Contexte et Problematique}
+
+\subsection{Contexte Scientifique et Technologique}
+
+L'imagerie histologique numerique a revolutionne l'analyse des tissus biologiques au cours des dernieres decennies. Les microscopes modernes peuvent generer des images de resolution exceptionnelle, permettant l'observation de details cellulaires et subcellulaires avec une precision inegalee. Cependant, cette evolution technologique s'accompagne de nouveaux defis techniques.
+
+Les images histologiques haute resolution peuvent atteindre des tailles de plusieurs gigaoctets, rendant leur manipulation complexe. De plus, les contraintes techniques d'acquisition conduisent souvent a la fragmentation de ces images en plusieurs parties, necessitant une reconstruction posterieure pour obtenir une vue d'ensemble coherente du tissu etudie.
+
+\subsection{Analyse de l'Existant}
+
+L'analyse des solutions existantes revele plusieurs categories d'outils :
+
+\subsubsection{Solutions Academiques}
+Les outils developpes dans le milieu academique, tels qu'ImageJ/FIJI, offrent des fonctionnalites de base pour la manipulation d'images. Cependant, ils presentent des limitations importantes pour la suture de fragments complexes et ne sont pas optimises pour les formats d'imagerie medicale modernes.
+
+\subsubsection{Solutions Commerciales}
+Les logiciels commercialises par les fabricants d'equipements d'imagerie medicale proposent souvent des fonctionnalites de reconstruction, mais ils sont generalement couteux, peu flexibles et lies a des ecosystemes proprietaires specifiques.
+
+\subsubsection{Outils Specialises}
+Quelques outils specialises existent pour la reconstruction d'images, mais ils sont souvent limites a des cas d'usage specifiques ou presentent des interfaces utilisateur complexes necessitant une expertise technique approfondie.
+
+\subsection{Besoins Identifies}
+
+L'analyse du contexte et des solutions existantes a permis d'identifier plusieurs besoins non satisfaits :
+
+\begin{itemize}
+\item Un outil combine facilite d'utilisation et algorithmes avances
+\item Support natif des formats d'imagerie medicale standards
+\item Interface intuitive pour les utilisateurs non-techniques
+\item Algorithmes de suture robustes et precis
+\item Distribution simple sans dependances complexes
+\item Performance adaptee aux images de grande taille
+\end{itemize}
+
+\subsection{Opportunites Technologiques}
+
+Le developpement recent d'algorithmes de vision par ordinateur, notamment les detecteurs de caracteristiques SIFT et les methodes d'optimisation numerique avancees, offre de nouvelles opportunites pour ameliorer la precision et l'automatisation de la suture d'images.
+
+Parallement, l'evolution des frameworks de developpement d'interfaces graphiques, comme PyQt6, permet de creer des applications desktop modernes et performantes avec un effort de developpement raisonnable.
+
+\end{document}

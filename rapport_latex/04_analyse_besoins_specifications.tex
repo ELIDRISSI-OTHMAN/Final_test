@@ -1,0 +1,170 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\usepackage{array}
+\onehalfspacing
+
+\begin{document}
+
+\section{Analyse des Besoins et Specifications}
+
+\subsection{Methodologie d'Analyse}
+
+L'analyse des besoins a ete menee selon une approche systematique impliquant plusieurs parties prenantes : chercheurs en imagerie medicale, techniciens de laboratoire, et utilisateurs finaux. Cette analyse a combine entretiens individuels, observations sur site, et analyse des workflows existants.
+
+\subsection{Parties Prenantes}
+
+\subsubsection{Utilisateurs Primaires}
+\begin{itemize}
+\item \textbf{Chercheurs en histologie} : Besoin d'outils precis pour l'analyse scientifique
+\item \textbf{Techniciens de laboratoire} : Recherche d'efficacite et de simplicite d'utilisation
+\item \textbf{Pathologistes} : Exigences de precision diagnostique
+\end{itemize}
+
+\subsubsection{Utilisateurs Secondaires}
+\begin{itemize}
+\item \textbf{Administrateurs IT} : Contraintes de deploiement et maintenance
+\item \textbf{Etudiants et stagiaires} : Besoin d'apprentissage rapide
+\end{itemize}
+
+\subsection{Besoins Fonctionnels Detailles}
+
+\subsubsection{Gestion des Images}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{2cm}|p{6cm}|}
+\hline
+\textbf{Fonctionnalite} & \textbf{Priorite} & \textbf{Description Detaillee} \\
+\hline
+Chargement TIFF pyramidal & Critique & Support complet des fichiers TIFF multi-resolution avec preservation des metadonnees \\
+\hline
+Support format SVS & Haute & Compatibilite avec les fichiers Aperio ScanScope pour l'interoperabilite \\
+\hline
+Chargement par lots & Moyenne & Capacite de charger plusieurs fragments simultanement \\
+\hline
+Apercu rapide & Moyenne & Generation automatique de miniatures pour navigation \\
+\hline
+\end{tabular}
+\caption{Besoins fonctionnels - Gestion des images}
+\end{table}
+
+\subsubsection{Manipulation des Fragments}
+
+Les besoins de manipulation incluent :
+
+\begin{itemize}
+\item \textbf{Transformations geometriques} : Rotation libre (pas seulement 90°), translation precise, retournements
+\item \textbf{Manipulation de groupe} : Selection multiple et transformation simultanee
+\item \textbf{Annulation/Retablissement} : Historique des operations pour correction d'erreurs
+\item \textbf{Alignement assiste} : Outils d'aide a l'alignement manuel
+\end{itemize}
+
+\subsubsection{Algorithmes de Suture}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{2cm}|p{6cm}|}
+\hline
+\textbf{Algorithme} & \textbf{Priorite} & \textbf{Cas d'Usage} \\
+\hline
+Suture automatique SIFT & Critique & Fragments avec texture suffisante et chevauchement \\
+\hline
+Suture par points & Haute & Controle manuel precis pour cas difficiles \\
+\hline
+Suture hybride & Moyenne & Combinaison automatique + corrections manuelles \\
+\hline
+\end{tabular}
+\caption{Besoins algorithmiques}
+\end{table}
+
+\subsection{Besoins Non-Fonctionnels}
+
+\subsubsection{Performance}
+
+Les exigences de performance ont ete definies en fonction des contraintes operationnelles :
+
+\begin{itemize}
+\item \textbf{Temps de reponse} : Interface reactive (< 100ms pour les interactions)
+\item \textbf{Throughput} : Traitement d'images jusqu'a 4GB en moins de 10 secondes
+\item \textbf{Utilisation memoire} : Optimisation pour fonctionner avec 8GB RAM
+\item \textbf{Scalabilite} : Support jusqu'a 50 fragments simultanement
+\end{itemize}
+
+\subsubsection{Utilisabilite}
+
+\begin{itemize}
+\item \textbf{Courbe d'apprentissage} : Utilisable par un novice en moins de 30 minutes
+\item \textbf{Interface intuitive} : Metaphores visuelles familieres
+\item \textbf{Feedback utilisateur} : Indication claire de l'etat des operations
+\item \textbf{Gestion d'erreurs} : Messages d'erreur comprehensibles et solutions proposees
+\end{itemize}
+
+\subsubsection{Fiabilite}
+
+\begin{itemize}
+\item \textbf{Robustesse} : Gestion gracieuse des erreurs sans perte de donnees
+\item \textbf{Precision} : Alignement avec erreur RMS < 2 pixels
+\item \textbf{Reproductibilite} : Resultats identiques pour memes parametres
+\end{itemize}
+
+\subsubsection{Compatibilite}
+
+\begin{itemize}
+\item \textbf{Systemes d'exploitation} : Windows 10/11 (64-bit) prioritaire
+\item \textbf{Formats d'images} : TIFF, SVS, PNG, JPEG
+\item \textbf{Interoperabilite} : Export compatible avec QuPath, ImageJ
+\end{itemize}
+
+\subsection{Contraintes Techniques}
+
+\subsubsection{Contraintes Materielles}
+\begin{itemize}
+\item Fonctionnement sur stations de travail standard (8-16 GB RAM)
+\item Compatibilite avec cartes graphiques integrees
+\item Support des ecrans haute resolution
+\end{itemize}
+
+\subsubsection{Contraintes Logicielles}
+\begin{itemize}
+\item Utilisation de bibliotheques open-source pour la perennite
+\item Minimisation des dependances externes
+\item Architecture modulaire pour maintenance facilitee
+\end{itemize}
+
+\subsubsection{Contraintes Organisationnelles}
+\begin{itemize}
+\item Deploiement sans privileges administrateur
+\item Documentation en francais et anglais
+\item Formation utilisateur minimale requise
+\end{itemize}
+
+\subsection{Specifications Techniques}
+
+\subsubsection{Architecture Logicielle}
+\begin{itemize}
+\item \textbf{Pattern architectural} : Model-View-Controller (MVC)
+\item \textbf{Langage principal} : Python 3.11+ pour la rapidite de developpement
+\item \textbf{Interface graphique} : PyQt6 pour les performances natives
+\item \textbf{Traitement d'images} : OpenCV, NumPy, scikit-image
+\end{itemize}
+
+\subsubsection{Formats de Donnees}
+\begin{itemize}
+\item \textbf{Images d'entree} : TIFF pyramidal, SVS, PNG, JPEG
+\item \textbf{Metadonnees} : JSON pour la serialisation des transformations
+\item \textbf{Export} : TIFF pyramidal, PNG haute qualite
+\end{itemize}
+
+\subsubsection{Algorithmes Requis}
+\begin{itemize}
+\item \textbf{Detection de caracteristiques} : SIFT (Scale-Invariant Feature Transform)
+\item \textbf{Correspondance} : FLANN matcher avec test de ratio de Lowe
+\item \textbf{Optimisation} : L-BFGS-B pour minimisation non-lineaire
+\item \textbf{Transformations} : Matrices de transformation 2D avec interpolation
+\end{itemize}
+
+\end{document>
